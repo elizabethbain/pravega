@@ -28,6 +28,8 @@ public interface IteratorItem<T> {
     /**
      * Gets a Collection of items that are contained in this instance. The items in this list are not necessarily related
      * to each other, nor are they guaranteed to be in any particular order.
+     *
+     * @return items contained in this
      */
     Collection<T> getEntries();
 }

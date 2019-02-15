@@ -23,9 +23,9 @@ import lombok.SneakyThrows;
  * Represents a Read Result from a Stream Segment. This is essentially an Iterator over smaller, continuous ReadResultEntries.
  * Calls to hasNext() will return true only if the following conditions are all met:
  * <ul>
- * <li> The ReadResult is not closed
- * <li> The ReadResult has not reached the end of a sealed StreamSegment
- * <li> The ReadResult has not consumed all requested data (getConsumedLength() < getMaxResultLength())
+ * <li> The ReadResult is not closed </li>
+ * <li> The ReadResult has not reached the end of a sealed StreamSegment </li>
+ <li> The ReadResult has not consumed all requested data (getConsumedLength()  {@literal <} getMaxResultLength()) </li>
  * </ul>
  * <p>
  * Calls to next() will return an element as long as hasNext() returns true. Some notes to consider:
@@ -48,23 +48,30 @@ import lombok.SneakyThrows;
 public interface ReadResult extends Iterator<ReadResultEntry>, AutoCloseable {
     /**
      * Gets a value indicating the Offset within the StreamSegment where this ReadResult starts at.
+     *
+     *  @return offset where this result starts at
      */
     long getStreamSegmentStartOffset();
 
     /**
      * Gets a value indicating the maximum length that this read result can have.
+     *
+     * @return maximum length this read result can be
      */
     int getMaxResultLength();
 
     /**
-     * Gets a value indicating the number of bytes that have been consumed via the next() method invocations.
+     * Gets a value indicating the number of bytes that have been consumed via
+     * next() method invocations.
      * Note that this does not track the individual consumption within the objects returned by next().
+     * @return number of bytes consumed via next() method invocations
      */
     int getConsumedLength();
 
     /**
      * Gets a value indicating whether this ReadResult is fully consumed (either because it was read in its entirety
      * or because it was closed externally).
+     * @return true is ReadResult was fully consumed (read or closed externally)
      */
     boolean isClosed();
 

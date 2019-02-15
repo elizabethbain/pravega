@@ -417,17 +417,17 @@ public abstract class VersionedSerializer<T> {
      *
      * Example:
      * * <pre>
-     * {@code
+     *  <code>
      * class Segment { ... }
      *
      * class SegmentSerializer extends VersionedSerializer.Direct<Segment> {
      *    // This is the version we'll be serializing now. We have already introduced read support for Version 1, but
      *    // we cannot write into Version 1 until we know that all deployed code knows how to read it. In order to guarantee
      *    // a successful upgrade when changing Versions, all existing code needs to know how to read the new version.
-     *    @Override
+     *    {@literal @}Override
      *    protected byte getWriteVersion() { return 0; }
      *
-     *    @Override
+     *    {@literal @}Override
      *    protected void declareVersions() {
      *      // We define all supported versions and their revisions here.
      *      version(0).revision(0, this::write00, this::read00)
@@ -454,6 +454,7 @@ public abstract class VersionedSerializer<T> {
      *    private void read10(RevisionDataInput input, Segment target) throws IOException { ... }
      * }
      * }
+     * </code>
      * </pre>
      *
      * @param <TargetType> Type of the object to serialize from and deserialize into.
@@ -592,7 +593,7 @@ public abstract class VersionedSerializer<T> {
      *
      * Example:
      * <pre>
-     * {@code
+     * <code>
      * class BaseType { ... }
      *
      * class SubType1 extends BaseType {
@@ -611,7 +612,7 @@ public abstract class VersionedSerializer<T> {
      * }
      *
      * class BaseTypeSerializer extends VersionedSerializer.MultiType<BaseType> {
-     *    @Override
+     *    {@literal @}Override
      *    protected void declareSerializers(Builder b) {
      *        // Declare sub-serializers here. IDs must be unique, non-changeable (during refactoring) and not necessarily
      *        // sequential or contiguous.
@@ -621,6 +622,7 @@ public abstract class VersionedSerializer<T> {
      *    }
      * }
      * }
+     * </code>
      * </pre>
      *
      * @param <BaseType> The base type that all other types will derive from.

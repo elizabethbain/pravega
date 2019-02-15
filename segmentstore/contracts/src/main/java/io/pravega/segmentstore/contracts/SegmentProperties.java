@@ -19,21 +19,31 @@ import java.util.UUID;
 public interface SegmentProperties {
     /**
      * Gets a value indicating the name of this StreamSegment.
+     *
+     * @return name of the stream segment
      */
     String getName();
 
     /**
      * Gets a value indicating whether this StreamSegment is sealed for modifications.
+     *
+     * @return true if this segment is sealed for modifications
+     *
      */
     boolean isSealed();
 
     /**
      * Gets a value indicating whether this StreamSegment is deleted (does not exist).
+     *
+     * @return true is this Stream Segment does not exist anymore
+     *
      */
     boolean isDeleted();
 
     /**
      * Gets a value indicating the last modification time of the StreamSegment.
+     *
+     * @return last modification time of the stream segment
      */
     ImmutableDate getLastModified();
 
@@ -41,12 +51,16 @@ public interface SegmentProperties {
      * Gets a value indicating the first offset in the Segment available for reading. For non-truncated Segments, this
      * will return 0 (whole segment is available for reading), while for truncated Segments, it will return the last
      * truncation offset.
+     *
+     * @return first offset in the segment available for reading
      */
     long getStartOffset();
 
     /**
      * Gets a value indicating the full, readable length of the StreamSegment. This includes the range of bytes that are
      * inaccessible due to them being before the StartOffset.
+     *
+     * @return full readable length including inaccessible bytes before the start offset
      */
     long getLength();
 

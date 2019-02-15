@@ -120,9 +120,10 @@ project('common') {
             project(':shared:protocol').sourceSets.main.java
         }
         dependencies {
-            compile 'org.projectlombok:lombok:' + lombokVersion   
+            compile 'org.projectlombok:lombok:' + lombokVersion
+            compile group: 'io.netty', name: 'netty-all', version: nettyVersion
+
         }
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -144,7 +145,6 @@ project('shared:authplugin') {
             sourceSets.main.java
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -164,7 +164,6 @@ project ('shared:cluster') {
             compile 'org.projectlombok:lombok:' + lombokVersion   
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -191,7 +190,6 @@ project ('shared:metrics') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -223,7 +221,6 @@ project('client') {
         title = "Pravega Client API"
         failOnError = false
         exclude "**/impl/**";
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:all,-reference", true)
     }
 }
@@ -242,7 +239,6 @@ project('test:testcommon') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -257,7 +253,6 @@ project('segmentstore:contracts') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:all,-reference", true)
     }
 }
@@ -275,7 +270,6 @@ project('segmentstore:storage') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -296,7 +290,6 @@ project('segmentstore:storage:impl') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -326,7 +319,6 @@ project ('bindings') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }
@@ -344,7 +336,6 @@ project('segmentstore:server') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:all,-reference,-missing", true)
     }
 }
@@ -544,7 +535,6 @@ project('shared:controller-api') {
             compile 'org.projectlombok:lombok:' + lombokVersion            
         }
         failOnError = false
-        options.addBooleanOption('html5', true)
         options.addBooleanOption("Xdoclint:none", true)
     }
 }

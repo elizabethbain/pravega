@@ -31,6 +31,9 @@ public class ReadResultEntryContents {
 
     /**
      * Gets a value indicating the length of the Data Stream.
+     *
+     * @return  length of the Data Stream
+     *
      */
     public int getLength() {
         return this.length;
@@ -38,6 +41,8 @@ public class ReadResultEntryContents {
 
     /**
      * Gets an InputStream representing the Data that was retrieved.
+     *
+     * @return InputStream with results of the retrieved Data
      */
     public InputStream getData() {
         return this.data;

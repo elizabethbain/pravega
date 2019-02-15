@@ -36,6 +36,8 @@ public class TableEntry {
      *
      * @param key   The Key.
      * @param value The Value.
+     *
+     *    @return unversioned new instance of TableEntry
      */
     public static TableEntry unversioned(@NonNull ArrayView key, @NonNull ArrayView value) {
         return new TableEntry(TableKey.unversioned(key), value);
@@ -46,6 +48,8 @@ public class TableEntry {
      *
      * @param key   The Key.
      * @param value The Value.
+     *
+     * @return  new Instance of TableEntry if key is unique
      */
     public static TableEntry notExists(@NonNull ArrayView key, @NonNull ArrayView value) {
         return new TableEntry(TableKey.notExists(key), value);
@@ -55,6 +59,9 @@ public class TableEntry {
      * Creates a new instance of the TableEntry class that indicates the Key must not previously exist.
      *
      * @param key   The Key.
+     *
+     *  @return new instance of TableEntry if key is not existing
+     *
      */
     public static TableEntry notExists(@NonNull ArrayView key) {
         return new TableEntry(TableKey.notExists(key), null);
@@ -66,7 +73,9 @@ public class TableEntry {
      * @param key   The Key.
      * @param value The Value.
      * @param version The desired version.
-     */
+     *
+     * @return new instable of TableEntry with specified version
+     * */
     public static TableEntry versioned(@NonNull ArrayView key, @NonNull ArrayView value, long version) {
         return new TableEntry(TableKey.versioned(key, version), value);
     }
